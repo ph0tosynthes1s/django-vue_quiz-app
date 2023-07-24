@@ -1,0 +1,19 @@
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block css_extra %}
+    <link rel="stylesheet" href=" {% static 'register/css/style.css'%}">
+{% endblock %}
+
+
+{% block content %}
+        <div class="register__block">
+        <h1 class="register__title">Регистрация</h1>
+        <h2 class="register__subtitle">Введите ваши данные!</h2>
+        <form action="{% url 'register' %}" method="post" class="register__form">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="register__btn">Зарегистрироваться</button>
+        </form>
+{% endblock %}

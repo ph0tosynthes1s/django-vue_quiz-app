@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block js_extra %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.js"></script>
+{% endblock %}
+
+{% block css_extra %}
+    <link rel="stylesheet" href=" {% static 'tests/css/style.css'%}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="tests__container" >
+        <div class="tests__profile">
+            <h1 class="tests__title_profile">{{ user }}, добро пожаловать на страницу наборов тестов!</h1>
+            <h2 class="tests__subtitle_profile">На данной странице вы можете пройти тесты и посмотреть свои результаты!</h2>
+            <a href="{%url 'score-view' %}" class="tests__link">Мои результаты</a>
+        </div>
+{% verbatim vue %}
+        <div class="tests__block" id="tests_app">
+            <h1 class="tests__title">Тесты</h1>
+              <a :href="[[item.id ]]" v-for="item in items" class="tests__card">
+                  <h1  class="tests__title">[[item.id ]]</h1>
+                  <h1  class="tests__title">[[item.title ]]</h1>
+                  <h1  class="tests__title">[[item.topic ]]</h1>
+              </a>
+        </div>
+{% endverbatim vue %}
+    </div>
+{% endblock %}
+{% block js_file %}
+    <script src="{% static 'tests/js/tests_page.js'%}"></script>
+{% endblock %}

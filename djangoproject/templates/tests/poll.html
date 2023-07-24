@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block css_extra %}
+    <link rel="stylesheet" href=" {% static 'tests/css/style.css'%}">
+{% endblock %}
+{% block js_extra %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<h1 class>{{obj.id}}. {{obj.title}}. {{obj.topic}}</h1>
+{% verbatim vue %}
+
+    <div id="poll_app">
+          <form @submit.prevent="handleSubmit()">
+          <div v-for="(question, id) in items" class="tests__card" :key="question.id">
+              <h1 :id="question.id">[[ question.id ]]) [[ question.question ]]</h1>
+
+                  <div v-for="(option, i) in question.options">
+                      <input :id="'radio_'+question.id" @change="check(id, i, question.id)" type="radio" :value="option" :name="'option-'+question.id" checked="checked">
+                      [[option]]
+                  </div>
+
+          </div>
+          <button onclick="alert('Ваш ответ принят!')" id="tests__button" type="submit">Завершить!</button>
+          </form>
+    </div>
+{% endverbatim vue %}
+{% endblock %}
+{% block js_file %}
+    <script src="{% static 'tests/js/poll.js'%}"></script>
+{% endblock %}

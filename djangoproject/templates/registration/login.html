@@ -1,0 +1,21 @@
+{% load static %}
+
+{% block css_extra %}
+    <link rel="stylesheet" href=" {% static 'css/style.css'%}">
+    <link rel="stylesheet" href=" {% static 'login/css/style.css'%}">
+{% endblock %}
+
+{% block content %}
+        <div class="login__block">
+        <h1 class="login__title">Авторизация</h1>
+        <h2 class="login__subtitle">Введите ваши данные!</h2>
+        <form action="{% url 'login' %}" method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="login__btn">Войти</button>
+        </form>
+        {% if form.errors %}
+            <p>{{ form.errors.error }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block css_extra %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="home__block">
+        <h1 class="home__title">Добро пожаловать!</h1>
+        {% if user.is_authenticated %}
+            <h2 class="home__subtitle">Вы авторизованы, {{ user }}, и можете перейти к тестам!</h2>
+            <div class="home__choose">
+                <a href="{%url 'all-polls' %}" class="home__link">Перейти к тестам</a>
+                <a href="{%url 'logout' %}" class="home__link">Выйти</a>
+            </div>
+        {% else %}
+            <h2 class="home__subtitle">Для доступа к тестам необходимо авторизироваться!</h2>
+             <div class="home__choose">
+                <a href="{%url 'login' %}" class="home__link">Авторизироваться</a>
+                <a href="{%url 'register' %}" class="home__link">Зарегистрироваться</a>
+             </div>
+        {% endif %}
+    </div>
+{% endblock %}

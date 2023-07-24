@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+
+{% load static %}
+
+{% block css_extra %}
+    <link rel="stylesheet" href=" {% static 'tests/css/style.css'%}">
+{% endblock %}
+
+
+{% block content %}
+    <h1>Мои результаты</h1>
+    {% for s in score %}
+    <li class="tests__card">
+        <h2>
+            Правильных ответов:{{s.correct_answers}} Неправильных ответов:{{s.incorrect_answers}} Набрано баллов:{{s.score}} - {{s.poll.title}} ({{s.poll.topic}}) Процент правильных ответов:{{s.percent}}%
+        </h2>
+    </li>
+    {% endfor %}
+    {% if score %}
+
+    {% else %}
+        <h1>Пока что вы не прошли ни одного теста!</h1>
+        <a href="{%url 'all-polls' %}" class="tests__link">Перейти к тестам!</a>
+    {% endif %}
+{% endblock %}
