@@ -15,9 +15,9 @@
 {% block content %}
     <div class="tests__container" >
         <div class="tests__profile">
-            <h1 class="tests__title_profile">{{ user }}, добро пожаловать на страницу наборов тестов!</h1>
-            <h2 class="tests__subtitle_profile">На данной странице вы можете пройти тесты и посмотреть свои результаты!</h2>
-            <a href="{%url 'score-view' %}" class="tests__link">Мои результаты</a>
+            <h1 class="tests__title_profile">{{ user }}, welcome to tests page!</h1>
+            <h2 class="tests__subtitle_profile">Here you can find tests and your results</h2>
+            <a href="{%url 'score-view' %}" class="tests__link">My results!</a>
         </div>
 {% verbatim vue %}
         <div class="tests__block" id="tests_app">

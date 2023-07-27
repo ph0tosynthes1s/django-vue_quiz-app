@@ -12,14 +12,14 @@
     {% for s in score %}
     <li class="tests__card">
         <h2>
-            Правильных ответов:{{s.correct_answers}} Неправильных ответов:{{s.incorrect_answers}} Набрано баллов:{{s.score}} - {{s.poll.title}} ({{s.poll.topic}}) Процент правильных ответов:{{s.percent}}%
+            Right answers:{{s.correct_answers}} Wrong answers:{{s.incorrect_answers}} Score:{{s.score}} - {{s.poll.title}} ({{s.poll.topic}}) Percent of right answers:{{s.percent}}%
         </h2>
     </li>
     {% endfor %}
     {% if score %}
 
     {% else %}
-        <h1>Пока что вы не прошли ни одного теста!</h1>
-        <a href="{%url 'all-polls' %}" class="tests__link">Перейти к тестам!</a>
+        <h1>You haven't completed any tests!</h1>
+        <a href="{%url 'all-polls' %}" class="tests__link">To Tests!</a>
     {% endif %}
 {% endblock %}
